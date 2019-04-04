@@ -30,10 +30,13 @@ class cup:
         possible['call_bluff'] = True
 
         if sum(v for k,v in q_matrix[last_call].items()) == 0:
+            print(last_call, 'all zeroes')
             return random.choice([k for k, v in q_matrix[last_call].items() if possible[k]])
         else:
             #[v for k,v in q_matrix[last_call].items() if possible[k]]
-
+            print(last_call, 'Take max')
+            #print(max(q_matrix[last_call].items(), key=operator.itemgetter(1))[0])
+            #print(q_matrix[last_call])
             return max(q_matrix[last_call].items(), key=operator.itemgetter(1))[0]
 
 
@@ -84,8 +87,6 @@ for alt in all_alternatives(20):
 
 
 
-
-
 def get_reward(last_state, action, players):
     if action == 'call_bluff':
         if call_bluff_success(last_state, players):
@@ -102,8 +103,10 @@ alpha = 0.1
 gamma = 0.6
 
 for epoch in range(100000):
+    no_dice_in_game = 20
     players = [cup(4) for x in range(5)]
     done = False
+    i=0
     last_state = (random.randint(1,3), random.randint(1,6))
     last_action = 'up_dig'
     while(not done):
@@ -115,7 +118,7 @@ for epoch in range(100000):
         # Reward
 
         action = player.decision(last_state, Q, no_dice_in_game)
-        state = make_call(decision, last_state, player)
+        state = make_call(action, last_state, player)
 
         # Reward from last step
         last_reward = get_reward(last_state, action, players)
@@ -128,11 +131,13 @@ for epoch in range(100000):
         last_state = state
         last_action = action
 
+        print(Q[(20,6)])
+        i+=1
 
 
 
 [print(k, sum(v.values())) for k,v in Q.items()]
 
-
+player.decision()
 
 
