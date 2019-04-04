@@ -30,18 +30,15 @@ class cup:
         possible['call_bluff'] = True
 
         if sum(v for k,v in q_matrix[last_call].items()) == 0:
-            print('Zeroes for all', last_call)
             return random.choice([k for k, v in q_matrix[last_call].items() if possible[k]])
         else:
-            print('Taking max')
-            [v for k,v in q_matrix[last_call].items() if possible[k]]
+            #[v for k,v in q_matrix[last_call].items() if possible[k]]
 
             return max(q_matrix[last_call].items(), key=operator.itemgetter(1))[0]
 
 
 
-def make_call(decision, last_call):
-    print(decision, last_call)
+def make_call(decision, last_call, player):
     if decision == 'up_mul':
         multiplier = last_call[0]
         digit = last_call[1]
@@ -54,10 +51,10 @@ def make_call(decision, last_call):
             return (multiplier +1, 1)
         else:
             return (multiplier, digit + 1)
-
     elif decision == 'up_safe':
         multiplier = last_call[0]
         digit = last_call[1]
+        player
         return (multiplier + 1, digit)
 
 
@@ -87,71 +84,55 @@ for alt in all_alternatives(20):
 
 
 
-players = [cup(4) for x in range(5)]
-no_dice_in_game = 20
-decisions = []
-calls = []
-last_decision = (1,1)
+
+
+def get_reward(last_state, action, players):
+    if action == 'call_bluff':
+        if call_bluff_success(last_state, players):
+            return 10
+        else:
+            return -5
+    else:
+        return 1
+
+
 
 # Hyperparameters
 alpha = 0.1
 gamma = 0.6
 
-for epoch in range(100):
-    for i in range(100):
-        player = players[i%len(players)]
-        decision = player.decision(last_call, Q, no_dice_in_game)
+for epoch in range(100000):
+    players = [cup(4) for x in range(5)]
+    done = False
+    last_state = (random.randint(1,3), random.randint(1,6))
+    last_action = 'up_dig'
+    while(not done):
+        player = players[i % len(players)]
 
-        decisions.append(decision)
-        if decision == 'call_bluff':
-            # Here i need to assess whether it was a positive reward or negative
-            if call_bluff_success(last_call, players):
-                Q[last_call][decision] = (1 - alpha) * Q[last_call][decision] + alpha * (1)
-            else:
-                Q[last_call][decision] = (1 - alpha) * Q[last_call][decision] + alpha * (-1)
-            break
+        # State
+        # Actions available
+        # Player
+        # Reward
 
-        call = make_call(decision, last_call)
-        calls.append(call)
+        action = player.decision(last_state, Q, no_dice_in_game)
+        state = make_call(decision, last_state, player)
 
+        # Reward from last step
+        last_reward = get_reward(last_state, action, players)
+        Q[last_state][last_action] = (1-alpha) * Q[last_state][last_action] + \
+                                alpha * (last_reward + gamma * max(Q[last_state].values()))
 
-        # If not call_bluff then it means that previous call was success
-        # Q(state, action) = (1-alpha) * q(state, action) + alpha*(reward + sigma*max (Q(next_state, all_actions)))
-        Q[last_call][decision] = (1-alpha) * Q[last_call][decision] + alpha * (1 + gamma * max(Q[call].values()))
+        if action == 'call_bluff':
+            done = True
 
-        # Update Q
-        last_decision = decision
-        last_call = call
-
-
-
+        last_state = state
+        last_action = action
 
 
 
 
+[print(k, sum(v.values())) for k,v in Q.items()]
 
-
-
-
-
-
-# What are states
-- Number of dice in game
-- Last call
-
-# Actions
-- Call bluff
-- New call
-    - Increase one mulitplier
-    - Increase number
-    - Other???
-    - Play safe, only what you have
-
-
-# Reward is dependent on next players choice
-- if they make new call, then +1
-- if they call bluff:
-    - if current_player did not meet
 
 
 
