@@ -76,6 +76,23 @@ def get_loser(last_state, action, players, i):
     else:
         return None
 
+def post_turn(last_state, action, players, i):
+    game_done = False
+    loser = get_loser(last_state, action, players, i)
+
+    # Removes one dice and throw out those that have no dice left
+    next_player_list = []
+    for p in players:
+        if p != loser:
+            p.remove_dice()
+            if p.number_of_dice > 0:
+                next_player_list.append(p)
+        else:
+            next_player_list.append(p)
+
+    if len(next_player_list) == 1:
+        game_done = True
+    return next_player_list, game_done
 
 # Set up q_matrix
 def get_all_alternatives(no_dice_in_game):
@@ -110,8 +127,6 @@ Q = get_all_possible_states_for_different_dice([20,16,12,8,7,6,5,4,3,2])
 
 
 
-
-
 # Hyperparameters
 alpha = 0.1
 gamma = 0.6
@@ -119,42 +134,37 @@ gamma = 0.6
 
 for epoch in range(100000):
     no_dice_in_game = 20
-    done = False
+    game_done = False
     players = [player(4) for x in range(5)]
     next_player_list = players
     i = 0
 
-    # Each game, until
-    while not done:
+    # Each game
+    while not game_done:
 
-        last_state = (random.randint(1, 3), random.randint(1, 6))
-        players = next_player_list
+        last_state = (1,1)
+        for p in players:
+            p.roll()
+        no_dice_in_game = sum(p.number_of_dice for p in players)
 
-        # Each iteration until someone calls bluff
+        # Each turn until someone calls bluff
         while(last_state != 'call_bluff'):
             current_player = players[i % len(players)]
             current_state = current_player.decision(last_state, Q, no_dice_in_game)
 
             # Reward from last step
             last_reward = get_reward(last_state, current_state, players)
-            loser = get_loser(last_state, current_state, players, i)
 
-            # Removes one dice and throw out those that have no dice left
-            next_player_list = []
-            for p in players:
-                if p != loser:
-                    p.remove_dice()
-                    if p.number_of_dice > 0:
-                        next_player_list.append(p)
 
-            if len(next_player_list) == 1:
-                done = True
+            if current_state == 'call_bluff':
+                players, game_done = post_turn(last_state, current_state, players, i)
 
             Q[no_dice_in_game][last_state][current_state] = (1-alpha) * Q[no_dice_in_game][last_state][current_state] + \
                                     alpha * (last_reward + gamma * max(Q[no_dice_in_game][current_state].values()))
 
             last_state = current_state
             i+=1
+
 
 #
 # [print(k, sum(v.values())) for k,v in Q[20].items()]
@@ -181,3 +191,12 @@ for epoch in range(100000):
 #     print('player',i-1, ' got:', last_reward)
 #     last_state = current_state
 #     i += 1
+
+last_state = (20,6)
+current_state = 'call_bluff'
+players = players = [player(4) for x in range(5)]
+i = 3
+next_player_list, game_done = post_turn(last_state, current_state, players, i)
+
+players
+new_player_list
