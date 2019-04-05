@@ -16,44 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_7.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="84" selection-start-line="84" selection-end-line="108" />
-              <folding>
-                <element signature="e#48#135#0" />
-                <element signature="e#76#80#0" />
-                <element signature="e#109#135#0" />
-                <element signature="e#190#292#0" />
-                <element signature="e#329#349#0" />
-                <element signature="e#1866#2055#0" />
-                <element signature="e#1043#1206#0" />
-                <element signature="e#1078#1179#0" />
-                <element signature="e#2183#2249#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_all_comb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="119" column="56" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
+            <state relative-caret-position="480">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -64,6 +35,8 @@
     <findStrings>
       <find>call_n</find>
       <find>dec</find>
+      <find>p not</find>
+      <find>pop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,17 +63,30 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="snyd" is-module-sdk="true">
+        <envs>
+          <env key="PATH" value="C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\mingw-w64\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\usr\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Scripts;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\condabin;C:\Users\emni\AppData\Local\Continuum\anaconda3\condabin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\PuTTY\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\PuTTY\;C:\Users\emni\AppData\Local\Continuum\anaconda3\Scripts;C:\Users\emni\AppData\Local\Continuum\anaconda3;C:\Users\emni\AppData\Local\JetBrains\PyCharm Community Edition 2018.3.4\bin;  " />
+        </envs>
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="snyd" />
+        <option name="myEnvs">
+          <map>
+            <entry key="PATH" value="C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\mingw-w64\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\usr\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Library\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\Scripts;C:\Users\emni\AppData\Local\Continuum\anaconda3\envs\explore\bin;C:\Users\emni\AppData\Local\Continuum\anaconda3\condabin;C:\Users\emni\AppData\Local\Continuum\anaconda3\condabin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\PuTTY\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\PuTTY\;C:\Users\emni\AppData\Local\Continuum\anaconda3\Scripts;C:\Users\emni\AppData\Local\Continuum\anaconda3;C:\Users\emni\AppData\Local\JetBrains\PyCharm Community Edition 2018.3.4\bin;  " />
+          </map>
+        </option>
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -192,7 +178,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-42" width="1920" height="1122" extended-state="0" />
+    <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24934107" />
@@ -208,26 +194,26 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.33027524" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.3298611" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24934107" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24934107" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.41488278" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32925585" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41488278" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925585" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.33027524" />
+      <window_info anchor="bottom" id="Python Console" order="10" visible="true" weight="0.32996207" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -273,19 +259,8 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="84" selection-start-line="84" selection-end-line="108" />
-          <folding>
-            <element signature="e#48#135#0" />
-            <element signature="e#76#80#0" />
-            <element signature="e#109#135#0" />
-            <element signature="e#190#292#0" />
-            <element signature="e#329#349#0" />
-            <element signature="e#1866#2055#0" />
-            <element signature="e#1043#1206#0" />
-            <element signature="e#1078#1179#0" />
-            <element signature="e#2183#2249#0" />
-          </folding>
+        <state>
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
@@ -298,8 +273,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_all_comb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="119" column="56" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
+        <state relative-caret-position="480">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="e#1#16#0" expanded="true" />
           </folding>

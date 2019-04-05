@@ -1,7 +1,7 @@
 
 import operator
 import random
-import ast
+
 class dice:
     def __init__(self):
         self.eye = random.randint(1,6)
@@ -67,6 +67,16 @@ def get_reward(last_state, action, players):
     else:
         return 1
 
+def get_loser(last_state, action, players, i):
+    if action == 'call_bluff':
+        if call_bluff_success(last_state, players):
+            return players[(i-1)%len(players)]
+        else:
+            return players[i%len(players)]
+    else:
+        return None
+
+
 # Set up q_matrix
 def get_all_alternatives(no_dice_in_game):
     alternatives = []
@@ -105,39 +115,46 @@ Q = get_all_possible_states_for_different_dice([20,16,12,8,7,6,5,4,3,2])
 # Hyperparameters
 alpha = 0.1
 gamma = 0.6
-players = [player(4) for x in range(5)]
 
 
 for epoch in range(100000):
     no_dice_in_game = 20
-    i=0
-    last_state = (random.randint(1,3), random.randint(1,6))
+    done = False
+    players = [player(4) for x in range(5)]
+    next_player_list = players
+    i = 0
 
-    #while all([p.number_of_dice > 0 for p in players]):
+    # Each game, until
+    while not done:
 
-    while(last_state != 'call_bluff'):
-        current_player = players[i % len(players)]
-        current_state = current_player.decision(last_state, Q, no_dice_in_game)
+        last_state = (random.randint(1, 3), random.randint(1, 6))
+        players = next_player_list
 
-        # Reward from last step
-        last_reward = get_reward(last_state, current_state, players)
+        # Each iteration until someone calls bluff
+        while(last_state != 'call_bluff'):
+            current_player = players[i % len(players)]
+            current_state = current_player.decision(last_state, Q, no_dice_in_game)
 
-        # All remove dice except loser
-        # if last_reward < 0:
-        #     loser_idx = (i-1) % len(players)
-        # else:
-        #     loser_idx = i%len(players)
-        #
-        # for idx, pl in enumerate(players):
-        #     if idx != loser_idx:
-        #         pl.remove_dice()
+            # Reward from last step
+            last_reward = get_reward(last_state, current_state, players)
+            loser = get_loser(last_state, current_state, players, i)
 
+            # Removes one dice and throw out those that have no dice left
+            next_player_list = []
+            for p in players:
+                if p != loser:
+                    p.remove_dice()
+                    if p.number_of_dice > 0:
+                        next_player_list.append(p)
 
-        Q[no_dice_in_game][last_state][current_state] = (1-alpha) * Q[no_dice_in_game][last_state][current_state] + \
-                                alpha * (last_reward + gamma * max(Q[no_dice_in_game][current_state].values()))
+            if len(next_player_list) == 1:
+                done = True
 
-        last_state = current_state
-        i+=1
+            Q[no_dice_in_game][last_state][current_state] = (1-alpha) * Q[no_dice_in_game][last_state][current_state] + \
+                                    alpha * (last_reward + gamma * max(Q[no_dice_in_game][current_state].values()))
+
+            last_state = current_state
+            i+=1
 
 #
 # [print(k, sum(v.values())) for k,v in Q[20].items()]
